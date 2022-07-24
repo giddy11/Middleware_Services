@@ -10,9 +10,9 @@ namespace Middleware_Services.Controllers
     {
         public WeatherForecastController(MessagingSenderService messageService, ILogger<WeatherForecastController> logger, IServiceProvider serviceProvider)
         {
-            _messageService = messageService; //?? throw new ArgumentException(nameof(messageService));
-            _logger = logger;
-            _serviceProvider = serviceProvider;
+            _messageService = messageService ?? throw new ArgumentException(nameof(messageService));
+            _logger = logger ?? throw new ArgumentException(nameof(logger));
+            _serviceProvider = serviceProvider ?? throw new ArgumentException(nameof(serviceProvider));
         }
 
         private readonly MessagingSenderService _messageService;
