@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Builder;
+using Middleware_Services.Middleware;
 using Middleware_Services.Services;
 using Middleware_Services.TypesOfServices;
 
@@ -22,13 +24,18 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    
 }
+
+app.UseMyCustomMiddleware();
 
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
 app.MapControllers();
+
+           //The order of middleware is important
 
 //app.Use(async (context, next) =>
 //{
